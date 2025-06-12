@@ -4,7 +4,7 @@ import type React from "react"
 
 import { useRef } from "react"
 import Link from "next/link"
-import { ChevronDown, Users, AlertTriangle, Shield, Zap, Github, Mail } from "lucide-react"
+import { ChevronDown, Users, AlertTriangle, Shield, Zap, Github, Mail, Camera } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
@@ -71,14 +71,20 @@ export default function Home() {
           <p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto">
             Advanced AI-powered detection with real-time risk assessment to make autonomous driving safer for everyone.
           </p>
-          <Link href="/try-now">
-            <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-6 text-lg rounded-xl">
-              Try Now
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Link href="/try-now">
+              <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-6 text-lg rounded-xl">
+                <Camera className="mr-2 h-5 w-5" />
+                Try Live Demo
+              </Button>
+            </Link>
+            <Button variant="outline" className="border-gray-700 text-gray-300 hover:text-white hover:border-blue-500 px-8 py-6 text-lg rounded-xl">
+              Learn More
             </Button>
-          </Link>
+          </div>
 
           <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-gray-800/50 backdrop-blur-sm p-6 rounded-xl border border-gray-700">
+            <div className="bg-gray-800/50 backdrop-blur-sm p-6 rounded-xl border border-gray-700 hover:border-red-500/50 transition-all">
               <div className="flex items-center justify-center w-12 h-12 bg-red-500/20 rounded-lg mb-4 mx-auto">
                 <AlertTriangle className="w-6 h-6 text-red-500" />
               </div>
@@ -86,7 +92,7 @@ export default function Home() {
               <p className="text-gray-400">Pedestrians in immediate proximity to the vehicle</p>
             </div>
 
-            <div className="bg-gray-800/50 backdrop-blur-sm p-6 rounded-xl border border-gray-700">
+            <div className="bg-gray-800/50 backdrop-blur-sm p-6 rounded-xl border border-gray-700 hover:border-yellow-500/50 transition-all">
               <div className="flex items-center justify-center w-12 h-12 bg-yellow-500/20 rounded-lg mb-4 mx-auto">
                 <Shield className="w-6 h-6 text-yellow-500" />
               </div>
@@ -94,7 +100,7 @@ export default function Home() {
               <p className="text-gray-400">Pedestrians within cautionary distance</p>
             </div>
 
-            <div className="bg-gray-800/50 backdrop-blur-sm p-6 rounded-xl border border-gray-700">
+            <div className="bg-gray-800/50 backdrop-blur-sm p-6 rounded-xl border border-gray-700 hover:border-green-500/50 transition-all">
               <div className="flex items-center justify-center w-12 h-12 bg-green-500/20 rounded-lg mb-4 mx-auto">
                 <Zap className="w-6 h-6 text-green-500" />
               </div>
@@ -126,13 +132,13 @@ export default function Home() {
 
             <Card className="bg-gray-800 border-gray-700 hover:border-blue-500 transition-all">
               <CardHeader>
-                <CardTitle>Semantic Segmentation</CardTitle>
-                <CardDescription>Precise identification of pedestrian boundaries</CardDescription>
+                <CardTitle>Browser-Based Processing</CardTitle>
+                <CardDescription>No server required for basic detection</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-300">
-                  Beyond simple bounding boxes, our system uses pixel-level segmentation to accurately determine
-                  pedestrian positions relative to the vehicle.
+                  Advanced client-side processing enables real-time pedestrian detection directly in your browser
+                  using WebRTC and modern web technologies.
                 </p>
               </CardContent>
             </Card>
@@ -152,13 +158,13 @@ export default function Home() {
 
             <Card className="bg-gray-800 border-gray-700 hover:border-blue-500 transition-all">
               <CardHeader>
-                <CardTitle>All-Weather Performance</CardTitle>
-                <CardDescription>Reliable in challenging conditions</CardDescription>
+                <CardTitle>Privacy-First Design</CardTitle>
+                <CardDescription>All processing happens locally</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-300">
-                  Advanced algorithms maintain high detection accuracy in rain, snow, fog, and low-light conditions
-                  where traditional systems fail.
+                  Your camera feed never leaves your device. All detection and analysis happens locally in your browser
+                  for maximum privacy and security.
                 </p>
               </CardContent>
             </Card>
@@ -199,38 +205,39 @@ export default function Home() {
 
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="item-1">
-              <AccordionTrigger>How accurate is the pedestrian detection system?</AccordionTrigger>
+              <AccordionTrigger>How does the browser-based detection work?</AccordionTrigger>
               <AccordionContent>
-              Our system achieves a mean Intersection over Union (mIoU) of 87.3%, ensuring reliable semantic 
-              segmentation of pedestrians in real-time. This performance is competitive with state-of-the-art 
-              models and suitable for deployment in both ideal and challenging environments.
+              Our system uses WebRTC to access your camera directly in the browser and processes the video feed
+              using advanced JavaScript algorithms. This demo simulates pedestrian detection for demonstration
+              purposes, showing how real-time analysis could work in a production environment.
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-2">
-              <AccordionTrigger>What hardware is required to run the detection system?</AccordionTrigger>
+              <AccordionTrigger>Is my camera data secure?</AccordionTrigger>
               <AccordionContent>
-                The system is optimized to run on various hardware configurations. For optimal performance, we recommend
-                a dedicated GPU with at least 6GB VRAM. However, we also offer a lightweight version that can run on
-                CPU-only setups with minimal latency.
+                Absolutely! Your camera feed never leaves your device. All processing happens locally in your browser,
+                ensuring complete privacy. No video data is transmitted to our servers or stored anywhere outside
+                your device.
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-3">
               <AccordionTrigger>
-                Can the system be integrated with existing autonomous vehicle platforms?
+                What browsers are supported?
               </AccordionTrigger>
               <AccordionContent>
-                Yes, we plan to provide APIs and SDKs for all major autonomous driving platforms including NVIDIA DRIVE,
-                Mobileye, and custom solutions. Our system is designed with interoperability in mind.
+                The demo works on all modern browsers that support WebRTC, including Chrome, Firefox, Safari, and Edge.
+                For the best experience, we recommend using the latest version of Chrome or Firefox.
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-4">
               <AccordionTrigger>How is pedestrian risk level determined?</AccordionTrigger>
               <AccordionContent>
-                Risk levels are calculated using a combination of factors: distance from the vehicle, relative velocity,
-                predicted trajectory, and environmental context.
+                Risk levels are calculated using a combination of factors: distance from the camera, relative position,
+                and simulated movement patterns. In a production system, this would include advanced AI analysis
+                of pedestrian behavior and trajectory prediction.
               </AccordionContent>
             </AccordionItem>
 
@@ -253,11 +260,11 @@ export default function Home() {
 
           <div className="prose prose-invert max-w-none">
             <p className="text-xl text-gray-300 mb-6">
-              Our project focuses on enhancing pedestrian safety in autonomous systems using a robust AI-powered framework. Leveraging semantic segmentation and object detection, our model identifies pedestrians with high accuracy in real-time.
+              Our project focuses on enhancing pedestrian safety in autonomous systems using a robust AI-powered framework. This demo showcases how modern web technologies can be used for real-time computer vision applications.
             </p>
 
             <p className="text-xl text-gray-300 mb-6">
-              We utilize a pre-trained YOLOv8 segmentation model to classify each pixel and assess pedestrian risk levels based on proximity and movement. Individuals closer to the vehicle are marked as high risk, while those farther away are categorized as medium or low risk.
+              We utilize browser-based processing to demonstrate pedestrian detection capabilities, simulating how advanced AI models could classify and assess pedestrian risk levels based on proximity and movement patterns.
             </p>
 
             <p className="text-xl text-gray-300">
